@@ -1,0 +1,61 @@
+\fancyhead[OR,EL]{}
+\fancyhead[ER]{\tikzheade}
+\fancyhead[OL]{\tikzhead}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+\pagestyle{fancy}
+\fancypagestyle{plain}{
+	\renewcommand{\headrulewidth}{0pt}
+	\fancyhf
+	%	\fancyfoot[C]{}
+}
+\usetikzlibrary{calc}
+
+\newcommand*\tikzhead{%
+	\begin{tikzpicture}[remember picture,overlay]
+		\node[%
+			fill = fscolor,%
+			xshift=-0.35cm,yshift=-0.3cm,
+			anchor=east,%
+			font = \color{white},%
+			text width = 13mm,%
+			inner sep = 3pt,%
+			%inner xsep=1em,
+			align= left,
+			minimum height=15pt,
+		] at ($(current page.north east)+(6pt,-1)$) {\phantom{a}\arabic{page}};
+		
+		\node[%
+			anchor=east,%
+			xshift=-0.5cm,yshift=-0.3cm,
+			inner sep = 3pt,
+			font=\color{fscolor},%
+		] at ($(current page.north east)+(-1.25,-1)$) {\sectiontitle};
+	\end{tikzpicture}
+}
+
+\newcommand*\tikzheade{%
+	\begin{tikzpicture}[remember picture,overlay]
+		\node[%
+			xshift=0.35cm,yshift=-0.3cm,
+			fill = fscolor,%
+			anchor=west,%
+			font = \color{white},%
+			text width = 13mm,%
+			inner sep = 3pt,
+			%inner xsep=1em,
+			align= right,
+			minimum height=15pt,
+		] at ($(current page.north west)-(6pt,1)$) {\arabic{page}\phantom{a}};
+		
+		\node[%
+			anchor=west,%
+			xshift=0.5cm,yshift=-0.3cm,
+			inner sep = 3pt,
+			font=\color{fscolor},%
+		] at ($(current page.north west)+(1.25,-1)$) {\sectiontitle};
+	\end{tikzpicture}
+}
+
+\input{config/jokes}

@@ -1,0 +1,41 @@
+\begin{wrapstuff}[type=figure, r, width=0.5\textwidth, top=1]
+    \setlength{\abovecaptionskip}{8pt plus 3pt minus 2pt}
+    \centering
+    \includegraphics[width=\textwidth]{./content/photos/vorsitz.jpg}
+    \caption*{Der erweiterte Vorsitz}
+\end{wrapstuff}
+
+\section{Die Fachschaft stellt sich vor}
+
+Hallo liebe Erstis!
+
+\lipsum[1-3]
+
+Einen guten Start ins Studium wünscht \\
+\textit{Eure Fachschaft}
+
+\newpage
+
+\ForEach{,}{%
+    \begin{minipage}[t][0.245\textheight][t]{0.33\textwidth}
+        \begin{center}
+            \setlength{\abovecaptionskip}{5pt plus 3pt minus 2pt}
+            \includegraphics[height=0.2\textheight,keepaspectratio]{./content/photos/cats/\thislevelitem.jpg}
+            \captionof*{figure}{\thislevelitem}
+        \end{center}
+    \end{minipage}
+}
+{%
+    cat1,
+    cat2,
+    cat3,
+    cat4,
+    cat5,
+    cat6,
+    cat7,
+    cat8,
+    cat9,
+    cat10,
+    cat11,
+    cat12%
+}%

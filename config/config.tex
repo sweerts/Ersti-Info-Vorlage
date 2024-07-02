@@ -1,0 +1,150 @@
+\usepackage{setspace}
+\KOMAoptions{ twoside=true, open=any, headings=optiontoheadandtoc,parskip=true,fontsize=8.5pt,parskip=half-}
+\usepackage{geometry}
+\geometry{
+	paperwidth=154mm,
+	paperheight=216mm,
+	layout=a5paper,
+	lmargin=1cm,
+	tmargin=1.5cm,
+	textheight=173mm,
+	textwidth=128mm,
+	includefoot,
+	footskip=30pt,
+	layoutoffset=3mm
+}
+
+
+%%%%%% Portraits %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{float}
+\usepackage{wrapstuff}
+
+
+%%%%%% Section titles %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\setcounter{secnumdepth}{0}
+\setcounter{tocdepth}{2}
+
+\RedeclareSectionCommand[
+	afterskip = {0.4ex plus 0.2ex},
+	beforeskip = {-1ex plus -1ex minus -.2ex},
+	font={\LARGE},
+]{section}
+
+\RedeclareSectionCommand[
+	afterskip = {.4ex plus .2ex},
+	beforeskip = {-0.25ex plus -1ex minus -.2ex},
+	font={\Large},
+]{subsection}
+	
+\DeclareNewSectionCommand[
+	afterskip = {.4ex plus .2ex},
+	beforeskip = {-0.25ex plus -1ex minus -.2ex},
+	indent=0pt,
+	font={\LARGE},
+	style=section,
+	level=1,
+	tocindent=0pt,
+	toclevel=1,
+	tocnumwidth=2em,
+	tocstyle=chapter,
+]{sectionPart}
+
+\RedeclareSectionCommand[
+afterskip = {-1em},
+beforeskip = {0ex plus -1ex minus .2ex},
+runin=false,
+]{paragraph}
+
+\setparsizes{0pt}%infdent
+{9pt}%vskip
+{0pt plus 1fil}
+
+
+%%%%%% Section headings %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{ifthen}
+\newcounter{secautolabel}
+\AddtoDoHook{heading/endgroup}{\setautolabel}
+\newcommand*{\setautolabel}[1]{%
+  	\stepcounter{secautolabel}%
+  	\label{sec:autolabel:\thesecautolabel}%
+	\def\sname{#1}
+	\ifthenelse{\equal{#1}{sectionPart}}{
+		\def\sname{section}
+	}{}
+  	\expandafter\xdef\csname \sname title\endcsname{%
+    	\noexpand\nameref{sec:autolabel:\thesecautolabel}%
+  	}%
+}
+
+
+%%%%%% Font, Encoding etc. %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[ngerman]{babel}
+\usepackage{amsmath,amsfonts,amssymb}
+\usepackage[default,light,lf]{FiraSans}
+\usepackage{pifont}
+
+
+%%%%%% Colors %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{xcolor,colortbl}
+
+\definecolor{fscolor}{RGB}{0,110,79}
+\definecolor{petrol}{HTML}{006e4f}
+\definecolor{lecegreen}{HTML}{44826d}
+
+
+%%%%%% tikz %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{tikz}
+\usetikzlibrary{calc}
+\usetikzlibrary{shapes.geometric}
+\usetikzlibrary{decorations}
+
+
+%%%%%% Tabellen %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{tabularx}
+\usepackage{makecell}
+\usepackage{tabularray}
+\usepackage{multicol}
+
+
+%%%%%% Sonstiges %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{qrcode}
+
+\usepackage[]{graphicx}
+
+\usepackage[export]{adjustbox}% http://ctan.org/pkg/adjustbox
+
+\usepackage{caption}
+
+\usepackage{array}
+\usepackage{forarray}
+\usepackage{forloop}
+
+\usepackage{enumitem}
+\usepackage{etoolbox}
+\usepackage[german=quotes]{csquotes}
+\usepackage{scrlayer-fancyhdr}
+\usepackage[
+	linktoc=black,
+	linkcolor=.,
+	urlcolor=fscolor,
+	breaklinks=true,
+	colorlinks,
+	bookmarks,
+	plainpages=false,
+	citecolor=gray,
+]{hyperref}
+\urlstyle{same}
+
+% Checkliste
+\newlist{todolist}{itemize}{2}
+\setlist[todolist]{label=$\square$}

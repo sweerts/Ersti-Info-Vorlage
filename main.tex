@@ -1,0 +1,25 @@
+%!TeX program = pdflatex
+\documentclass{scrbook}
+
+\input{config/config.tex}
+\input{config/footer_header.tex}
+\input{config/commands.tex}
+
+\usepackage{lipsum}
+
+\includeonly{%
+	begruessung/00_begruessung_main.tex,
+	other_content/erpressung.tex
+}
+
+\raggedbottom
+
+\begin{document}
+	\input{umschlag/titelseite.tex}
+	\cleardoubleemptypage
+	\tableofcontents
+	\setcounter{page}{1}
+	\include{begruessung/00_begruessung_main.tex}
+	\include{other_content/erpressung.tex}
+	\input{umschlag/Rückblatt.tex}
+\end{document}
